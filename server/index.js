@@ -19,14 +19,19 @@ app.use(morgan('dev'))
 io.on('connection', (socket) => {
   socket.on('room', (room) => {
 
-    if (io.sockets.adapter.rooms.get(room)) {
-      console.log(io.sockets.adapter.rooms)
-      console.log("Room is occupied")
-    }
-
+    // if (io.sockets.adapter.rooms.get(room)) {
+    //   console.log(io.sockets.adapter.rooms)
+    //   console.log("Room is occupied")
+    // }
 
     socket.join(room)
     console.log(`User ${socket.id} joined room ${room}`)
+
+    socket.on('words', (words) => {
+      console.log(words)
+      io.in(room).emit('words', words)
+    })
+
 
     socket.on('message', (message) => {
       console.log("Room", room, "Message:", message)
