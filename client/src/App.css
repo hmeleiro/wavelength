@@ -1,0 +1,12 @@
+.bar1 {
+  height: 40px;
+  width: 140px;
+  background-color: red;
+  position: absolute;
+}
+.bar2 {
+  height: 40px;
+  width: 20px;
+  background-color: green;
+  position: absolute;
+}
